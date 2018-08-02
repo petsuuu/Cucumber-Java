@@ -57,7 +57,7 @@ public class AprenderCucumber {
 		entrega = cal.getTime();
 	}
 
-	@Quando("^a entrega atrasar em (\\d+) (.+)$")
+	@Quando("^a entrega atrasar em (\\d+) (dia|dias|mes|meses)$")
 	public void aEntregaAtrasarEmDias(int arg1,String tempo) throws Throwable {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(entrega);
