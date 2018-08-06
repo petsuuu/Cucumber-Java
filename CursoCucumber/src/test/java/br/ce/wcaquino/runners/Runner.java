@@ -8,7 +8,9 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features="src/test/resources/features/aprender_cucumber.feature",
+		glue = "br.ce.wcaquino.steps",
 		plugin = "pretty",
+		tags ="~@ignore",
 		monochrome = true, 
 		snippets = SnippetType.CAMELCASE, 
 		dryRun = false,
