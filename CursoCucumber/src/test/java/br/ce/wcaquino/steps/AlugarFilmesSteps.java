@@ -12,11 +12,12 @@ import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
 
-public class AlugarFilmes {
+public class AlugarFilmesSteps {
 
 	private Filme filme;
 	private AluguelService aluguel = new AluguelService();
 	private NotaAluguel nota;
+	private String erro;
 
 	@Dado("^um filme com estoque de (\\d+) unidades$")
 	public void umFilmeComEstoqueDeUnidades(int arg1) throws Throwable {
@@ -31,7 +32,12 @@ public class AlugarFilmes {
 
 	@Quando("^alugar$")
 	public void alugar() throws Throwable {
-		nota = aluguel.alugar(filme);
+		try {
+			nota = aluguel.alugar(filme);
+		}catch(RuntimeException e) {
+			erro = e.getMessage();
+		}
+		
 	}
 
 	@Então("^o preço do aluguel será R\\$ (\\d+)$")
@@ -53,8 +59,15 @@ public class AlugarFilmes {
 
 	}
 
-	@Então("^o estoque do filme séra (\\d+) unidade$")
+	@Então("^o estoque do filme será (\\d+) unidade$")
 	public void oEstoqueDoFilmeSéraUnidade(int arg1) throws Throwable {
 		Assert.assertEquals(arg1, filme.getEstoque());
 	}
+	
+	@Então("^não será possivel por falta de stoque$")
+	public void nãoSeráPossivelPorFaltaDeStoque() throws Throwable {
+		Assert.assertEquals("Filme sem estoque", erro);
+		
+	}
+	
 }
