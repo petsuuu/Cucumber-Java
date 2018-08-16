@@ -9,12 +9,15 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features="src/test/resources/features/alugar_filme.feature",
 		glue = "br.ce.wcaquino.steps",
-		plugin = "pretty",
+		plugin = {"pretty","html:target/report-html","json:target/report.json"},
 		tags ="~@ignore",
-		monochrome = true, 
+		//mvn teste ( execução cmd)
+		monochrome = false, 
 		snippets = SnippetType.CAMELCASE, 
 		dryRun = false,
 		strict= false)
-public class Runner {
+public class RunnerTest {
 
 }
+
+//mvn test -Dcucumber.options="-h"
