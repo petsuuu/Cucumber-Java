@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
@@ -77,14 +79,26 @@ public class InserirContasSteps {
 		Assert.assertEquals("Conta adicionada com sucesso!", texto);
 	}
 
-	@Então("^sou notificar que o nome da conta é obrigatório$")
+	@Então("^sou notificado que o nome da conta é obrigatório$")
 	public void sou_notificar_que_o_nome_da_conta_é_obrigatório() throws Throwable {
-
+		String texto = driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
+		Assert.assertEquals("Informe o nome da conta", texto);
 	}
 
 	@Então("^sou notificado que já existe uma conta com esse nome$")
 	public void sou_notificado_que_já_existe_uma_conta_com_esse_nome() throws Throwable {
-
+		String texto = driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
+		Assert.assertEquals("Já existe uma conta com esse nome!", texto);
 	}
-
+	
+	@Before
+	public void inicio() {
+		System.out.println("Começando aqui");
+	}
+	
+	@After
+	public void FecharBrowser() {
+	driver.quit();
+	System.out.println("Terminando...");
+	}
 }
