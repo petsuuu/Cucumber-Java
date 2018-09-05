@@ -14,26 +14,18 @@ import cucumber.api.junit.Cucumber;
 		features="src/test/resources/features/",
 		glue = "br.ce.wcaquino.steps",
 		plugin = {"pretty","html:target/report-html","json:target/report.json"},
-		tags = {"~@ignore","@unitários"},
+		tags = {"@funcionais"},
 		//mvn teste ( execução cmd)
 		monochrome = true, 
 		snippets = SnippetType.CAMELCASE, 
 		dryRun = false,
 		strict= false)
-public class RunnerTest {
+public class RunnerFuncionalTest {
 	
-	@BeforeClass
-	public static void reset() {
-		WebDriver driver = new ChromeDriver();
-		driver.get("https://srbarriga.herokuapp.com/login");
-		driver.findElement(By.id("email")).sendKeys("teste_peterson@teste.com");
-		driver.findElement(By.id("senha")).sendKeys("123456");
-		driver.findElement(By.tagName("button")).click();
-		driver.findElement(By.linkText("reset")).click();
-		driver.quit();
-	}
+
 	
 
 }
 
 //mvn test -Dcucumber.options="-h"
+

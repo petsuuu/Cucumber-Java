@@ -116,7 +116,7 @@ public class InserirContasSteps {
 		System.out.println("Começando aqui, parte 2");
 	}
 
-	@After(order = 1)
+	@After(order = 1, value = {"@funcionais"})
 	public void screenshot(Scenario cenario) {
 		File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		try {
@@ -126,7 +126,7 @@ public class InserirContasSteps {
 		}
 	}
 
-	@After(order = 0)
+	@After(order = 0, value = {"@funcionais"})
 	public void FecharBrowser() {
 		driver.quit();
 		System.out.println("Terminando...");
