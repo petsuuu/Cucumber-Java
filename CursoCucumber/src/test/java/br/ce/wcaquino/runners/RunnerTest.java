@@ -19,7 +19,7 @@ import cucumber.api.junit.Cucumber;
 		monochrome = true, 
 		snippets = SnippetType.CAMELCASE, 
 		dryRun = false,
-		strict= false)
+		strict= true)
 public class RunnerTest {
 	
 	@BeforeClass

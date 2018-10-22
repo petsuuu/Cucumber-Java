@@ -7,6 +7,7 @@ Funcionalidade: Alugar Fillme
 
   Cenário: Deve alugar um filme com sucesso
     Dado um filme 
+    
     | estoque | 2     |
     | preco   | 3     |
     | tipo    | comum |

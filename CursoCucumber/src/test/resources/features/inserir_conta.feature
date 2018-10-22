@@ -22,12 +22,10 @@ Funcionalidade: Cadastro de contas
     Então recebo a mensagem "<mensagem>"
 
     Exemplos: 
-      | conta          | mensagem                         |
-      | Conta de Teste | Conta adicionada com sucesso!    |
-      |                | Informe o nome da conta          |
-      |Conta mesmo nome| Já existe uma conta com esse nome!|
-      
-      
+      | conta            | mensagem                           |
+      | Conta de Teste   | Conta adicionada com sucesso!      |
+      |                  | Informe o nome da conta            |
+      | Conta mesmo nome | Já existe uma conta com esse nome! |
   #Cenário: Não deve inserir uma conta com nome já existente
    # E informo a conta "Conta mesmo nome"
    # E seleciono Salvar
